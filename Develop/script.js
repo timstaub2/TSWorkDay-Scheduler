@@ -26,3 +26,19 @@ $(".hour13").text(hour13);
 $(".hour14").text(hour14);
 $(".hour15").text(hour15);
 $(".hour16").text(hour16);
+
+// check for time change and set background
+for (var i = 7; i < 17; i++) {
+    var a = moment();
+    var b = moment(i, "LT");
+    if ((a.diff(b, "minutes")) > 0 && (a.diff(b, "minutes")) < 60) {
+        $(".event" + i).css("background", "lightyellow");
+        $(".event" + i).css("border", "1px dotted black");
+    }
+    if ((a.diff(b, "minutes") > 60)) {
+        $(".event" + i).css("background", "lightgray");
+    }
+    if (a.diff(b, "minutes") < 0) {
+        $(".event" + i).css("background", "lightgreen");
+    }
+}
