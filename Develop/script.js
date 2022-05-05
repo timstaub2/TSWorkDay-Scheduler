@@ -3,29 +3,9 @@ var now = moment().format('MMMM Do YYYY');
 $('#currentDay').text(now);
 
 //set time to var
-var hour7 = moment(7, "LT").format("LT");
-var hour8 = moment(8, "LT").format("LT");
-var hour9 = moment(9, "LT").format("LT");
-var hour10 = moment(10, "LT").format("LT");
-var hour11 = moment(11, "LT").format("LT");
-var hour12 = moment(12, "LT").format("LT");
-var hour13 = moment(13, "LT").format("LT");
-var hour14 = moment(14, "LT").format("LT");
-var hour15 = moment(15, "LT").format("LT");
-var hour16 = moment(16, "LT").format("LT");
-
-
-// set text for hour of day
-$(".hour7").text(hour7);
-$(".hour8").text(hour8);
-$(".hour9").text(hour9);
-$(".hour10").text(hour10);
-$(".hour11").text(hour11);
-$(".hour12").text(hour12);
-$(".hour13").text(hour13);
-$(".hour14").text(hour14);
-$(".hour15").text(hour15);
-$(".hour16").text(hour16);
+for (var i = 7; i < 17; i++) {
+    $(".hour"+i).text( moment(i, "LT").format("LT"))
+}
 
 // check for time change and set background
 for (var i = 7; i < 17; i++) {
@@ -42,3 +22,31 @@ for (var i = 7; i < 17; i++) {
         $(".event" + i).css("background", "lightgreen");
     }
 }
+
+function textSave() {
+    for (var i = 7; i < 17; i++) {
+        localStorage.setItem("userInput"+i, $(".text"+i));
+    }
+}
+
+function renderText() {
+    for (var i = 7; i < 17; i++) {
+        $(".text"+i).text(localStorage.getItem("userInput"+i));
+    }
+}
+
+for (var i = 7; i < 17; i++) {
+    $(".save"+i).text(localStorage.setItem("userInput"+i,$("text"+i).val()));
+}
+
+var saveAll = $(".saveAll");
+saveAll.on("click",function() {
+    saveText();
+    renderText();
+});
+
+var deleteAll = $(".deleteAll");
+deleteAll.on("click",function() {
+    localStorage.clear();
+    renderText();
+})
