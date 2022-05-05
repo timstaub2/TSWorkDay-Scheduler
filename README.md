@@ -5,3 +5,5 @@
 ![image](https://user-images.githubusercontent.com/49574487/166117477-0eb5d2ab-f952-42d1-9e66-02ea2d85f8b6.png)
 ## Color code time blocks
 ![image](https://user-images.githubusercontent.com/49574487/166119697-126d61d9-9d7f-482d-942a-76c0bcee5b4a.png)
+## Add for loop for Moments and save button/icon
+![image](https://user-images.githubusercontent.com/49574487/167036712-e4d1c675-509a-4f14-b39f-ec00ca2143fb.png)
