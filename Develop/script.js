@@ -1,31 +1,12 @@
+
 // new js file
 var now = moment().format('MMMM Do YYYY');
 $('#currentDay').text(now);
 
 //set time to var
-var hour7 = moment(7, "LT").format("LT");
-var hour8 = moment(8, "LT").format("LT");
-var hour9 = moment(9, "LT").format("LT");
-var hour10 = moment(10, "LT").format("LT");
-var hour11 = moment(11, "LT").format("LT");
-var hour12 = moment(12, "LT").format("LT");
-var hour13 = moment(13, "LT").format("LT");
-var hour14 = moment(14, "LT").format("LT");
-var hour15 = moment(15, "LT").format("LT");
-var hour16 = moment(16, "LT").format("LT");
-
-
-// set text for hour of day
-$(".hour7").text(hour7);
-$(".hour8").text(hour8);
-$(".hour9").text(hour9);
-$(".hour10").text(hour10);
-$(".hour11").text(hour11);
-$(".hour12").text(hour12);
-$(".hour13").text(hour13);
-$(".hour14").text(hour14);
-$(".hour15").text(hour15);
-$(".hour16").text(hour16);
+for (var i = 7; i < 17; i++) {
+    $(".hour" + i).text(moment(i, "LT").format("LT"))
+}
 
 // check for time change and set background
 for (var i = 7; i < 17; i++) {
@@ -42,3 +23,69 @@ for (var i = 7; i < 17; i++) {
         $(".event" + i).css("background", "lightgreen");
     }
 }
+
+function textSave() {
+    for (var i = 7; i < 17; i++) {
+        localStorage.setItem("userInput"+i, $(".text"+i).val());
+    }
+}
+
+function renderText() {
+    for (var i = 7; i < 17; i++) {
+        $(".text"+i).text(localStorage.getItem("userInput"+i));
+    }
+}
+
+var save7 = $(".save7");
+var save8 = $(".save8");
+var save9 = $(".save9");
+var save10 = $(".sav10");
+var save11 = $(".save11");
+var save12 = $(".save12");
+var save13 = $(".save13");
+var save14 = $(".save14");
+var save15 = $(".save15");
+var save16 = $(".save16");
+
+save7.on("click",function() {
+    localStorage.setItem("userInput7",$(".text7").val());
+});
+save8.on("click",function() {
+    localStorage.setItem("userInput8",$(".text8").val());
+});
+save9.on("click",function() {
+    localStorage.setItem("userInput9",$(".text9").val());
+});
+save10.on("click",function() {
+    localStorage.setItem("userInput10",$(".text10").val());
+});
+save11.on("click",function() {
+    localStorage.setItem("userInput11",$(".text11").val());
+});
+save12.on("click",function() {
+    localStorage.setItem("userInput12",$(".text12").val());
+});
+save13.on("click",function() {
+    localStorage.setItem("userInput13",$(".text13").val());
+});
+save14.on("click",function() {
+    localStorage.setItem("userInput14",$(".text14").val());
+});
+save15.on("click",function() {
+    localStorage.setItem("userInput15",$(".text15").val());
+});
+save16.on("click",function() {
+    localStorage.setItem("userInput16",$(".text16").val());
+});
+
+var saveAll = $(".saveIcon");
+saveAll.on("click", function () {
+    textSave();
+    renderText(); 
+});
+
+var deleteAll = $(".deleteAll");
+deleteAll.on("click", function () {
+    localStorage.clear();
+    renderText();
+})
